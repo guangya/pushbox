@@ -5,11 +5,11 @@ import javax.microedition.lcdui.Image;
 public class Tools {
 
 	/**
-	 * ´´½¨Í¼ÏñimgÔÚÖ¸¶¨Í¸Ã÷¶ÈÏÂµÄ¸±±¾
+	 * åˆ›å»ºå›¾åƒimgåœ¨æŒ‡å®šé€æ˜åº¦ä¸‹çš„å‰¯æœ¬
 	 * 
-	 * @param img Ô­Ê¼Í¼Æ¬            
-	 * @param value Í¸Ã÷¶È,È¡Öµ·¶Î§ÔÚ0x00~0xff(0~255)Ö®¼ä£¬Í¸Ã÷¶ÈÔ½¸ß£¬Í¼ÏñÏÔÊ¾Ô½²»ÇåÎú
-	 * @return ·µ»ØÍ¸Ã÷»¯ºóµÄÍ¼Æ¬
+	 * @param img åŸå§‹å›¾ç‰‡
+	 * @param value é€æ˜åº¦,å–å€¼èŒƒå›´åœ¨0x00~0xff(0~255)ä¹‹é—´ï¼Œé€æ˜åº¦è¶Šé«˜ï¼Œå›¾åƒæ˜¾ç¤ºè¶Šä¸æ¸…æ™°
+	 * @return è¿”å›é€æ˜åŒ–åçš„å›¾ç‰‡
 	 */
 	public static Image getTransparent(Image img, int alphaValue) {
 		int width = img.getWidth();
@@ -26,17 +26,5 @@ public class Tools {
 		}
 
 		return Image.createRGBImage(imgData, width, height, true);
-	}
-	
-	
-	/**
-	 * ¼ò»¯Êä³öÓï¾äµÄÊéĞ´
-	 * @param str
-	 */
-	public static void p(String str){
-		System.out.println(str);
-	}
-	public static void p(int num){
-		System.out.println("" + num);
 	}
 }

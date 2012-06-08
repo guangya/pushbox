@@ -2,29 +2,29 @@ import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
 
-// 1¡¢´ıÏÔÊ¾µÄÍ¼Æ¬£¨ÉèÖÃÎª¶ÀÁ¢½Ó¿Ú£¬·½±ãÈÕºóÔö¼ÓÏÔÊ¾ÎÄ×ÖĞÅÏ¢µÄ½Ó¿Ú£©£»
-// 2¡¢·µ»ØÖ÷²Ëµ¥µÄ°´Å¥£¨¿ÉÑ¡£¬Ìá¹©ÉèÖÃ½Ó¿Ú£¬Èç¹ûÎ´ÉèÖÃ£¬Ê¹ÓÃÆÕÍ¨ÎÄ±¾´úÌæ¡££©£»
-// 3¡¢ÓÎÏ·ÒıÇæ£¨ÒÔ±ãÓÚ¸Ä±äÓÎÏ·ÔËĞĞ×´Ì¬£©£»
-// 4¡¢»­²¼³ß´ç£»
-// 5¡¢µ±Ç°³¡¾°ÔÚÓÎÏ·»­²¼ÖĞµÄ×ø±ê£¨¿ÉÑ¡£¬Ìá¹©ÉèÖÃ½Ó¿Ú£¬Èç¹ûÎ´ÉèÖÃ£¬Ä¬ÈÏÊ¹ÓÃ£¨0£¬0£©
 
 class Info{
 
-	private Engine engine;              // ÓÎÏ·ÒıÇæ
-	private int canvasWidth;            // ÓÎÏ·»­²¼µÄ¿í
-	private int canvasHeight;           // ÓÎÏ·»­²¼µÄ¸ß
-	private int posX;                   // µ±Ç°³¡¾°×óÉÏ½ÇÏà¶ÔÓÚ»­²¼×óÉÏ½ÇµÄX×ø±ê
-	private int posY;                   // µ±Ç°³¡¾°×óÉÏ½ÇÏà¶ÔÓÚ»­²¼×óÉÏ½ÇµÄY×ø±ê
-	
-	private Image imgMsg;               // ½çÃæÖ÷ÌåÏÔÊ¾µÄĞÅÏ¢
-	private Image imgLeftMenu;          // ×ó²Ëµ¥Ê¹ÓÃµÄÍ¼Ïó
-	private Image imgRightMenu;         // ÓÒ²Ëµ¥Ê¹ÓÃµÄÍ¼Ïó
-	private int leftMenuBoundState;     // ×ó²Ëµ¥°ó¶¨µÄÓÎÏ·×´Ì¬
-	private int rightMenuBoundState;	// ÓÒ²Ëµ¥°ó¶¨µÄÓÎÏ·×´Ì¬
-//	private int leftMenuWidth;          // ×ó²Ëµ¥µÄ¿í¶È
-	private int leftMenuHeight;         // ×ó²Ëµ¥µÄ¸ß¶È
-	private int rightMenuWidth;         // ÓÒ²Ëµ¥µÄ¿í¶È
-	private int rightMenuHeight;        // ÓÒ²Ëµ¥µÄ¸ß¶È
+	// æ¸¸æˆå¼•æ“
+	private Engine engine;
+	// æ¸¸æˆç”»å¸ƒå°ºå¯¸
+	private int canvasWidth;
+	private int canvasHeight;
+	// å½“å‰åœºæ™¯ç›¸å¯¹äºå±å¹•å·¦ä¸Šè§’çš„åæ ‡
+	private int posX;
+	private int posY;
+	// è¦æ˜¾ç¤ºçš„ä¿¡æ¯å›¾
+	private Image imgMsg;
+	// å·¦å³èœå•ä½¿ç”¨çš„å›¾ç‰‡
+	private Image imgLeftMenu;
+	private Image imgRightMenu;
+	// å·¦å³èœå•ç»‘å®šçš„æ¸¸æˆçŠ¶æ€
+	private int leftMenuBoundState;
+	private int rightMenuBoundState;
+	// å·¦å³èœå•çš„å°ºå¯¸
+	private int leftMenuHeight;
+	private int rightMenuWidth;
+	private int rightMenuHeight;
 	
 	public Info(Engine engine, int width, int height){
 		this.engine = engine;
@@ -36,7 +36,7 @@ class Info{
 	}
 	
 	/**
-	 * ÉèÖÃµ±Ç°³¡¾°ÒªÏÔÊ¾µÄÏûÏ¢
+	 * è®¾ç½®å½“å‰åœºæ™¯è¦æ˜¾ç¤ºçš„æ¶ˆæ¯
 	 * 
 	 * @param imgMsg
 	 */
@@ -45,23 +45,22 @@ class Info{
 	}
 	
 	/**
-	 * ÉèÖÃ½çÃæ×ó²Ëµ¥²ÎÊı
+	 * è®¾ç½®ç•Œé¢å·¦èœå•å‚æ•°
 	 * 
-	 * @param imgMenu   ×ó²Ëµ¥ÏÔÊ¾µÄĞÅÏ¢Í¼Æ¬
-	 * @param boundGameState ×ó²Ëµ¥°ó¶¨µÄÓÎÏ·×´Ì¬
+	 * @param imgMenu   å·¦èœå•æ˜¾ç¤ºçš„ä¿¡æ¯å›¾ç‰‡
+	 * @param boundGameState å·¦èœå•ç»‘å®šçš„æ¸¸æˆçŠ¶æ€
 	 */
 	public void setLeftMenu(Image imgMenu, int boundGameState){
 		imgLeftMenu = imgMenu;
 		leftMenuBoundState = boundGameState;
-//		leftMenuWidth = imgMenu.getWidth();
 		leftMenuHeight = imgMenu.getHeight();
 	}
 	
 	/**
-	 * ÉèÖÃ½çÃæÓÒ²Ëµ¥²ÎÊı
+	 * è®¾ç½®ç•Œé¢å³èœå•å‚æ•°
 	 * 
-	 * @param imgMenu   ²Ëµ¥ÏÔÊ¾µÄĞÅÏ¢Í¼Æ¬
-	 * @param boundGameState ²Ëµ¥°ó¶¨µÄÓÎÏ·×´Ì¬
+	 * @param imgMenu   èœå•æ˜¾ç¤ºçš„ä¿¡æ¯å›¾ç‰‡
+	 * @param boundGameState èœå•ç»‘å®šçš„æ¸¸æˆçŠ¶æ€
 	 */
 	public void setRightMenu(Image imgMenu, int boundGameState){
 		imgRightMenu = imgMenu;
@@ -71,10 +70,10 @@ class Info{
 	}
 	
 	/**
-	 * ÉèÖÃ³¡¾°ÔÚ»­²¼ÖĞÏà¶ÔÓÚ»­²¼×óÉÏ½ÇµÄ×ø±ê
+	 * è®¾ç½®åœºæ™¯åœ¨ç”»å¸ƒä¸­ç›¸å¯¹äºç”»å¸ƒå·¦ä¸Šè§’çš„åæ ‡
 	 * 
-	 * @param x ³¡¾°×óÉÏ½ÇÏà¶ÔÓÚ»­²¼×óÉÏ½ÇµÄX×ø±ê
-	 * @param y ³¡¾°×óÉÏ½ÇÏà¶ÔÓÚ»­²¼×óÉÏ½ÇµÄY×ø±ê
+	 * @param x åœºæ™¯å·¦ä¸Šè§’ç›¸å¯¹äºç”»å¸ƒå·¦ä¸Šè§’çš„Xåæ ‡
+	 * @param y åœºæ™¯å·¦ä¸Šè§’ç›¸å¯¹äºç”»å¸ƒå·¦ä¸Šè§’çš„Yåæ ‡
 	 */
 	public void setPosition(int x, int y){
 		posX = x;
@@ -82,29 +81,30 @@ class Info{
 	}
 	
 	/**
-	 * ´¦Àíµ±Ç°³¡¾°µÄÂß¼­¼°³¡¾°»æÖÆ
+	 * å¤„ç†å½“å‰åœºæ™¯çš„é€»è¾‘åŠåœºæ™¯ç»˜åˆ¶
 	 * 
 	 * @param gra
 	 */
 	public void process(Graphics gra){
-		// »æÖÆÖ÷ÒªĞÅÏ¢
+		// ç»˜åˆ¶ä¸»è¦ä¿¡æ¯
 		if(null != imgMsg){
 			gra.drawImage(imgMsg, posX, posY, Graphics.LEFT|Graphics.TOP);
 		}
 		
-		// »æÖÆ×ó²Ëµ¥
+		// ç»˜åˆ¶å·¦èœå•
 		if(null != imgLeftMenu){
 			gra.drawImage(imgLeftMenu, posX, posY + canvasHeight - leftMenuHeight, Graphics.LEFT|Graphics.TOP);
 		}
 		
-		// »æÖÆÓÒ²Ëµ¥
+		// ç»˜åˆ¶å³èœå•
 		if(null != imgRightMenu){
 			gra.drawImage(imgRightMenu, posX + canvasWidth - rightMenuWidth, posY + canvasHeight - rightMenuHeight, Graphics.LEFT|Graphics.TOP);
 		}
 	}
 	
+
 	/**
-	 * ´¦Àíµ±Ç°³¡¾°µÄ°´¼üÊÂ¼ş
+	 * å¤„ç†å½“å‰åœºæ™¯çš„æŒ‰é”®äº‹ä»¶
 	 * 
 	 * @param gameAction
 	 */

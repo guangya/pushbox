@@ -25,11 +25,11 @@ public class MainMidlet extends MIDlet{
 		
 		switch(engine.getGameState()){
 		case Engine.GAME_STATE_PAUSE:
-			// ��Ϸ������ͣ״̬
+			// 游戏暂停
 			pauseApp();
 			break;
 		case Engine.GAME_STATE_EXIT:
-			// ��Ϸ����MIDlet����Destoryed state
+			// 设备进入Destoryed state
 			destroyApp(true);
 			break;
 		}

@@ -7,8 +7,8 @@ public class IntroScene{
 	
 	private int width;
 	private int height;
-	private int posX;             //ÓÎÏ·¼ò½é³¡¾°×óÉÏ½ÇÏà¶ÔÓÚÆÁÄ»×óÉÏ½ÇµÄX×ø±ê
-	private int posY;             //ÓÎÏ·¼ò½é³¡¾°×óÉÏ½ÇÏà¶ÔÓÚÆÁÄ»×óÉÏ½ÇµÄY×ø±ê
+	private int posX;             // æ¸¸æˆç®€ä»‹åœºæ™¯å·¦ä¸Šè§’ç›¸å¯¹äºŽå±å¹•å·¦ä¸Šè§’çš„Xåæ ‡
+	private int posY;             // æ¸¸æˆç®€ä»‹åœºæ™¯å·¦ä¸Šè§’ç›¸å¯¹äºŽå±å¹•å·¦ä¸Šè§’çš„Yåæ ‡
 	private Image introImage;
 	private Engine engine;
 	
@@ -24,7 +24,7 @@ public class IntroScene{
 	}
 	
 	/**
-	 * ÉèÖÃ²Ëµ¥½çÃæµÄ×óÉÏ½ÇÏà¶ÔÓÚÆÁÄ»µÄ×ø±ê
+	 * è®¾ç½®èœå•ç•Œé¢çš„å·¦ä¸Šè§’ç›¸å¯¹äºŽå±å¹•çš„åæ ‡
 	 * 
 	 * @param x
 	 * @param y
@@ -35,14 +35,14 @@ public class IntroScene{
 	}
 	
 	/**
-	 * °´¼üÏûÏ¢´¦Àí
+	 * æŒ‰é”®æ¶ˆæ¯å¤„ç†
 	 * 
 	 * @param gameAction
 	 */
 	public void keyEvent(int gameAction){}
 	
 	/**
-	 * ³¡¾°Âß¼­´¦Àí
+	 * åœºæ™¯é€»è¾‘å¤„ç†
 	 * 
 	 * @param gra
 	 */
@@ -50,15 +50,15 @@ public class IntroScene{
 		gra.drawImage(introImage, posX, posY, Graphics.TOP|Graphics.LEFT);
 		
 		if(0 == posY){
-			// Í£ÁôÒ»¶ÎÊ±¼ä
+			// åœç•™ä¸€æ®µæ—¶é—´
 			try{
 				Thread.sleep(1500);
 			}catch(Exception e){}
 			
-			// ½øÈëÓÎÏ·Ö÷²Ëµ¥½çÃæ
+			// è¿›å…¥æ¸¸æˆä¸»èœå•ç•Œé¢
 			engine.setGameState(Engine.GAME_STATE_MENU);
 		}else{
-			// È·±£×Ý×ø±ê²»Ð¡ÓÚ0
+			// ç¡®ä¿çºµåæ ‡ä¸å°äºŽ0
 			posY = (posY - 2 > 0) ? posY - 2 : 0;
 		}
 	}

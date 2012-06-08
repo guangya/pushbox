@@ -1,7 +1,7 @@
 package tools;
 
 /**
- * 管理系统的音效及开关
+ * 绯荤粺闊虫晥绠＄悊
  * 
  * @author Guangya
  *

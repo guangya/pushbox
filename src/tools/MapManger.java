@@ -3,22 +3,20 @@ package tools;
 import java.io.DataInputStream;
 import java.io.InputStream;
 
-import javax.microedition.lcdui.game.Sprite;
 
 /**
- * µØÍ¼¹ÜÀíÀà
- * 
- * ¹¦ÄÜËµÃ÷:
- * 
- * 1¡¢¼ì²éµØÍ¼Ä¿Â¼£¬»ñµÃµØÍ¼×ÜÊı£¨¼´¹Ø¿¨Êı£©
- * 2¡¢ÉèÖÃtileWidth¡¢tileHeight
- * 3¡¢½«mapwinÉú³ÉµÄµØÍ¼×ª»¯³ÉÒ»¸ö¶àÎ¬Êı×é:[tileIndex][×éºÅ][rows, columns]£¨¿ÉÄÜ³öÏÖ¾Ö²¿Êı×é¶ÔÏóÎŞ·¨·ÃÎÊµÄÇé¿ö£©
- * 
- * 
+ * åœ°å›¾ç®¡ç†ç±»
+ *
+ * åŠŸèƒ½è¯´æ˜:
+ *
+ * 1ã€æ£€æŸ¥åœ°å›¾ç›®å½•ï¼Œè·å¾—åœ°å›¾æ€»æ•°ï¼ˆå³å…³å¡æ•°ï¼‰
+ * 2ã€è®¾ç½®tileWidthã€tileHeight
+ * 3ã€å°†mapwinç”Ÿæˆçš„åœ°å›¾è½¬åŒ–æˆä¸€ä¸ªå¤šç»´æ•°ç»„:[tileIndex][ç»„å·][rows, columns]ï¼ˆå¯èƒ½å‡ºç°å±€éƒ¨æ•°ç»„å¯¹è±¡æ— æ³•è®¿é—®çš„æƒ…å†µï¼‰
+ *
+ *
  * @author Guangya
  *
  */
-
 public class MapManger {
 	
 	private int mapNum = 2;
@@ -29,7 +27,7 @@ public class MapManger {
 	}
 
 	/**
-	 * ÉèÖÃtileµÄ³ß´ç
+	 * è®¾ç½®tileçš„å°ºå¯¸
 	 * 
 	 * @param width
 	 * @param height
@@ -37,7 +35,7 @@ public class MapManger {
 	public void setTileSize(int width, int height){}
 	
 	/**
-	 * »ñµÃÖ¸¶¨Ë÷Òı¶ÔÓ¦µÄµØÍ¼Êı¾İ
+	 * è·å¾—æŒ‡å®šç´¢å¼•å¯¹åº”çš„åœ°å›¾æ•°æ®
 	 * 
 	 * @param mapIndex
 	 * @return
@@ -47,21 +45,19 @@ public class MapManger {
 		try{
 			InputStream is = this.getClass().getResourceAsStream(mapSource[mapIndex]);
 			DataInputStream dis = new DataInputStream(is);
-			for(int i = 0; i < 18; ++i){				
-				for(int j = 0; j < 15; ++j){
-					short a = dis.readShort();
-					int b = 0x07 & a >> 13;						
-				}
-			}	
-		}catch(Exception e){}
-		
-		
+//			for(int i = 0; i < 18; ++i){				
+//				for(int j = 0; j < 15; ++j){
+//					short a = dis.readShort();
+//					int b = 0x07 & a >> 13;						
+//				}
+//			}	
+		}catch(Exception e){}		
 		
 		return new int[3];
 	}
 	
 	/**
-	 * »ñµÃµØÍ¼×ÜÊı
+	 * è·å¾—åœ°å›¾æ€»æ•°
 	 * 
 	 * @return
 	 */
@@ -70,7 +66,7 @@ public class MapManger {
 	}
 	
 	/**
-	 * É¨ÃèµØÍ¼Ä¿Â¼²¢½«ÓĞĞ§µÄµØÍ¼µÄÎÄ¼şÂ·¾¶´æ·Åµ½Êı×émapSourceÖĞ
+	 * æ‰«æåœ°å›¾ç›®å½•å¹¶å°†æœ‰æ•ˆçš„åœ°å›¾çš„æ–‡ä»¶è·¯å¾„å­˜æ”¾åˆ°æ•°ç»„mapSourceä¸­
 	 */
 	private void scanMaps(){
 		

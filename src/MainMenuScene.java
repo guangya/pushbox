@@ -5,19 +5,29 @@ import javax.microedition.lcdui.game.Sprite;
 
 public class MainMenuScene{
 	
+	// åœºæ™¯å°ºå¯¸
 	private int width;
 	private int height;
-	private int posX;             //³¡¾°×óÉÏ½ÇÏà¶ÔÓÚÆÁÄ»×óÉÏ½ÇµÄX×ø±ê
-	private int posY;             //³¡¾°×óÉÏ½ÇÏà¶ÔÓÚÆÁÄ»×óÉÏ½ÇµÄY×ø±ê
+	// åœºæ™¯å·¦ä¸Šè§’ç›¸å¯¹äºå±å¹•å·¦ä¸Šè§’çš„åæ ‡
+	private int posX;
+	private int posY;
+	// åŠŸèƒ½é€‰æ‹©èœå•ä½¿ç”¨çš„å›¾ç‰‡åŠå…¶å°ºå¯¸
 	private Image btnImage;
-	private Image selectionImage;
-	private Engine engine;
-	private int items[][][];      // items[²Ëµ¥ÏîË÷Òı][0:²Ëµ¥Í¼Æ¬µÄ×ø±ê£¬1:²Ëµ¥ÎÄ±¾µÄ×ø±ê][0:x×ø±ê£»1:y×ø±ê]
-	private int selectedIndex;
-	private final int MENU_ITEM_NUM = 5;
 	private int btnWidth;
 	private int btnHeight;
-	private String itemNames[] = {"¿ª Ê¼ ÓÎ Ï·", "¿ª Æô Òô Ğ§", "²Ù ×÷ Ëµ Ã÷", "¹Ø           ÓÚ", "ÍË ³ö ÓÎ Ï·"};
+	// èœå•æ ‡é¢˜æ–‡å­—
+	private Image selectionImage;
+	// æ¸¸æˆç”»å¸ƒ
+	private Engine engine;
+	// å­˜å‚¨å„èœå•é¡¹ä½¿ç”¨çš„å›¾ç‰‡ç»˜åˆ¶çš„åæ ‡ã€‚items[èœå•é¡¹ç´¢å¼•][0:èœå•å›¾ç‰‡çš„åæ ‡ï¼Œ1:èœå•æ–‡æœ¬çš„åæ ‡][0:xåæ ‡ï¼›1:yåæ ‡]
+	private int items[][][];
+	// å½“å‰é€‰ä¸­çš„èœå•æƒ³çš„ç´¢å¼•
+	private int selectedIndex;      
+	// èœå•é¡¹æ€»æ•°å¸¸é‡ï¼Œä½¿ç”¨çš„ç›®çš„æ˜¯å‡å°‘è·å–èœå•é¡¹æ•°ç»„é•¿åº¦çš„æ¬¡æ•°
+	private final int MENU_ITEM_NUM = 5;  
+	// èœå•é¡¹çš„è¯´æ˜æ–‡å­—
+	private String itemNames[] = {"å¼€ å§‹ æ¸¸ æˆ ", "å¼€ å¯ éŸ³ æ•ˆ", "æ“ ä½œ è¯´ æ˜", "å…³          äº", "é€€ å‡º æ¸¸ æˆ"};
+	// èœå•é¡¹å¯¹åº”çš„æ¸¸æˆçŠ¶æ€ï¼Œä¸itemNames[]å¯¹åº”
 	private int    itemToGameState[] = {Engine.GAME_STATE_RUN, -1, Engine.GAME_STATE_OPERATION, Engine.GAME_STATE_ABOUT, Engine.GAME_STATE_EXIT};
 	
 	
@@ -38,7 +48,7 @@ public class MainMenuScene{
 	}
 	
 	/**
-	 * ÉèÖÃ²Ëµ¥½çÃæµÄ×óÉÏ½ÇÏà¶ÔÓÚÆÁÄ»µÄ×ø±ê
+	 * è®¾ç½®èœå•ç•Œé¢çš„å·¦ä¸Šè§’ç›¸å¯¹äºå±å¹•çš„åæ ‡
 	 * 
 	 * @param x
 	 * @param y
@@ -46,12 +56,12 @@ public class MainMenuScene{
 	public void setPosition(int x, int y){
 		this.posX = x;
 		this.posY = y;
-		// ÖØĞÂ¼ÆËã¸÷ÔªËØµÄ×ø±ê
+		// é‡æ–°è®¡ç®—å„å…ƒç´ çš„åæ ‡
 		initMenuItems();
 	}
 	
 	/**
-	 * °´¼üÏûÏ¢´¦Àí
+	 * æŒ‰é”®æ¶ˆæ¯å¤„ç†
 	 * 
 	 * @param gameAction
 	 */
@@ -69,11 +79,11 @@ public class MainMenuScene{
 			break;
 		case GameCanvas.FIRE:
 			if(1 == selectedIndex){
-				if(itemNames[1] == "¿ª Æô Òô Ğ§"){
-					itemNames[1] = "¹Ø ±Õ Òô Ğ§";
+				if(itemNames[1] == "å¼€ å¯ éŸ³ æ•ˆ"){
+					itemNames[1] = "å…³ é—­ éŸ³ æ•ˆ";
 					engine.setSoundSwitch(false);
 				}else{
-					itemNames[1] = "¿ª Æô Òô Ğ§";
+					itemNames[1] = "å¼€ å¯ éŸ³ æ•ˆ";
 					engine.setSoundSwitch(true);
 				}
 			}else{
@@ -84,7 +94,7 @@ public class MainMenuScene{
 	}
 	
 	/**
-	 * ³¡¾°Âß¼­´¦Àí
+	 * åœºæ™¯é€»è¾‘å¤„ç†
 	 * 
 	 * @param gra
 	 */
@@ -103,9 +113,9 @@ public class MainMenuScene{
 	}
 	
 	/**
-	 * ³õÊ¼»¯²Ëµ¥Ïî
+	 * åˆå§‹åŒ–èœå•é¡¹
 	 * 
-	 * ¸Ãº¯Êı²»»áÖØ¸´³õÊ¼»¯²Ëµ¥Ïî
+	 * è¯¥å‡½æ•°ä¸ä¼šé‡å¤åˆå§‹åŒ–èœå•é¡¹
 	 * 
 	 * @return void
 	 */

@@ -6,16 +6,6 @@ import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
 import javax.microedition.lcdui.game.TiledLayer;
 
-/**
- * 
- * ±³¾°²ã£¨Ê¹ÓÃÏµÍ³±³¾°»ò×Ô¶¨Òå±³¾°£©
- * Ç½±Ú²ã£¨ÎŞ·¨´©ĞĞ£©
- * Ä¿±ê²ã£¨±êÊ¶Ïä×ÓµÄÄ¿±êÎ»ÖÃ£©
- * 
- * 
- * @author Guangya
- *
- */
 
 
 public class RunningScene {
@@ -47,7 +37,7 @@ public class RunningScene {
 		isWin = false;
 		isWait = true;
 		
-		// ¼ÓÔØ³¡¾°ÓÃµ½µÄ×ÊÔ´
+		// åŠ è½½åœºæ™¯ç”¨åˆ°çš„èµ„æº
 		try{
 			mapImage = Image.createImage("/image/map&player&box.png");
 			playerImage = Image.createImage(mapImage, 0, 32, 48, 48, 0);
@@ -56,44 +46,44 @@ public class RunningScene {
 			inlineMenuImage = Image.createImage("/image/inlineMenus.png");
 		}catch(Exception e){}
 
-		// ¼ÆËã²Ëµ¥Ïî³ß´ç
+		// è®¡ç®—èœå•é¡¹å°ºå¯¸
 		menuItemWidth = inlineMenuImage.getWidth();
 		menuItemHeight = inlineMenuImage.getHeight() / 4;
 		
-		// ³õÊ¼»¯Íæ¼Ò
+		// åˆå§‹åŒ–ç©å®¶
 		player = new Sprite(playerImageFront, 16, 16);	
 		
-		// ³õÊ¼»¯ÓÎÏ·µØÍ¼
+		// åˆå§‹åŒ–æ¸¸æˆåœ°å›¾
 		level = engine.getGameLevel();
 		initMap(level);
 	}
 
 	protected void process(Graphics gra) {
-		// »æÖÆµØÍ¼
+		// ç»˜åˆ¶åœ°å›¾
 		backMap.paint(gra);
 		wallMap.paint(gra);
 		destMap.paint(gra);
 		
-		// »æÖÆÍæ¼Ò
+		// ç»˜åˆ¶ç©å®¶
 		player.paint(gra);
 		player.nextFrame();
 		
-		// »æÖÆÏä×Ó
+		// ç»˜åˆ¶ç®±å­
 		int boxNum = aBoxes.length;
 		for(int i = 0; i < boxNum; ++i){
 			aBoxes[i].paint(gra);
 		}
 		
-		// »æÖÆ¹Ø¿¨
+		// ç»˜åˆ¶å…³å¡
 		gra.drawRegion(inlineMenuImage, 0, 39, 55, 13, Sprite.TRANS_NONE, 0, 3, Graphics.LEFT|Graphics.TOP);
 		gra.setColor(255, 255, 255);
 		gra.drawString("" + level, 22, 0, Graphics.LEFT|Graphics.TOP);
 		
-		// »æÖÆ²Ù×÷²½ÊıÍ³¼Æ
+		// ç»˜åˆ¶æ“ä½œæ­¥æ•°ç»Ÿè®¡
 		gra.drawRegion(inlineMenuImage, 0, 26, 55, 13, Sprite.TRANS_NONE, canvasWidth - menuItemWidth, 3, Graphics.LEFT|Graphics.TOP);
 		gra.drawString("" + count, canvasWidth - menuItemWidth - 10, 0, Graphics.LEFT|Graphics.TOP);
 		
-		// »æÖÆ²Ëµ¥
+		// ç»˜åˆ¶èœå•
 		gra.drawRegion(inlineMenuImage, 0, 0, 55, 13, Sprite.TRANS_NONE, canvasWidth - menuItemWidth, canvasHeight - menuItemHeight, Graphics.LEFT|Graphics.TOP);
 		gra.drawRegion(inlineMenuImage, 0, 13, 55, 13, Sprite.TRANS_NONE, 0, canvasHeight - menuItemHeight, Graphics.LEFT|Graphics.TOP);
 		
@@ -129,7 +119,7 @@ public class RunningScene {
 			break;
 		}
 		
-		// Èç¹ûÒÑ½«ËùÓĞµÄÏä×Ó·ÅÖÃµ½Ä¿±êÎ»ÖÃ£¬Ôò½øÈëÏÂÒ»¹Ø
+		// å¦‚æœå·²å°†æ‰€æœ‰çš„ç®±å­æ”¾ç½®åˆ°ç›®æ ‡ä½ç½®ï¼Œåˆ™è¿›å…¥ä¸‹ä¸€å…³
 		if(isAllToDest()){
 			isWin = true;
 		}
@@ -144,19 +134,19 @@ public class RunningScene {
 	}
 	
 	/**
-	 * ³õÊ¼»¯ÓÎÏ·³¡¾°
+	 * åˆå§‹åŒ–æ¸¸æˆåœºæ™¯
 	 * 
-	 * @param level µ±Ç°¹Ø¿¨
+	 * @param level å½“å‰å…³å¡
 	 */
 	public void initMap(int level){
 		count = 0;
 		aBoxes = null;
-		// ³õÊ¼»¯¸÷µØÍ¼¶ÔÏó
+		// åˆå§‹åŒ–å„åœ°å›¾å¯¹è±¡
 		backMap = new TiledLayer(15, 18, mapImage, 16, 16);
 		wallMap = new TiledLayer(15, 18, mapImage, 16, 16);
 		destMap = new TiledLayer(15, 18, mapImage, 16, 16);	
 		
-		// ÁÙÊ±±äÁ¿£¬ÓÃÀ´´æ´¢Ïä×Ó¶ÔÏó
+		// ä¸´æ—¶å˜é‡ï¼Œç”¨æ¥å­˜å‚¨ç®±å­å¯¹è±¡
 		Vector vBoxes = new Vector();
 		
 		try{
@@ -183,7 +173,7 @@ public class RunningScene {
 						break;
 					case 5://box
 						backMap.setCell(j, i, 1);
-						// µØÍ¼ÖĞ³öÏÖÏä×Ó£¬ÔòĞÂ½¨Ò»¸öÏä×Ó¶ÔÏó£¬²¢´æ´¢ÔÚvBoxesÖĞ 
+						// åœ°å›¾ä¸­å‡ºç°ç®±å­ï¼Œåˆ™æ–°å»ºä¸€ä¸ªç®±å­å¯¹è±¡ï¼Œå¹¶å­˜å‚¨åœ¨vBoxesä¸­ 
 						Sprite newBox = new Sprite(boxImage, 16, 16);
 						newBox.setPosition(16*j, 16*i);
 						vBoxes.addElement(newBox);
@@ -195,7 +185,7 @@ public class RunningScene {
 			}	
 		}catch(Exception e){}	
 		
-		// Ïä×Ó³õÊ¼»¯Íê±Ï£¬½«Ïä×Ó¶ÔÏó¼¯×ª´æµ½Êı×éÖĞ
+		// ç®±å­åˆå§‹åŒ–å®Œæ¯•ï¼Œå°†ç®±å­å¯¹è±¡é›†è½¬å­˜åˆ°æ•°ç»„ä¸­
 		boxNum = vBoxes.size();
 		aBoxes = new Sprite[boxNum];
 		vBoxes.copyInto(aBoxes);
@@ -203,21 +193,21 @@ public class RunningScene {
 	}
 
 	/**
-	 * ²âÊÔÅö×²
+	 * æµ‹è¯•ç¢°æ’
 	 * 
-	 * @param int dx ÔÚx·½ÏòÒªÒÆ¶¯µÄÏñËØÊı
-	 * @param int dy ÔÚy·½ÏòÒªÒÆ¶¯µÄÏñËØÊı
+	 * @param int dx åœ¨xæ–¹å‘è¦ç§»åŠ¨çš„åƒç´ æ•°
+	 * @param int dy åœ¨yæ–¹å‘è¦ç§»åŠ¨çš„åƒç´ æ•°
 	 * @return bool
 	 */
 	private boolean testCollision(int dx, int dy){
 		player.move(dx, dy);
 		
-		// ÓëµØÍ¼Åö×²
+		// ä¸åœ°å›¾ç¢°æ’
 		if(player.collidesWith(wallMap, false)){
 			return true;
 		}
 		
-		// Íæ¼ÒÓëÏä×ÓµÄÅö×²ÒÔ¼°Ïä×ÓÓëÏä×Ó¡¢Ïä×ÓÓëÇ½±ÚµÄÅö×²
+		// ç©å®¶ä¸ç®±å­çš„ç¢°æ’ä»¥åŠç®±å­ä¸ç®±å­ã€ç®±å­ä¸å¢™å£çš„ç¢°æ’
 		int boxNum = aBoxes.length;
 		for(int i = 0; i < boxNum; ++i){
 			if(player.collidesWith(aBoxes[i], false)){
@@ -229,16 +219,16 @@ public class RunningScene {
 			}
 		}
 		
-		// Íæ¼Ò²Ù×÷ÓĞĞ§
+		// ç©å®¶æ“ä½œæœ‰æ•ˆ
 		return false;
 	}	
 	
 	/**
-	 * ¼ì²éµ±Ç°µÄÏä×ÓÊÇ·ñºÍÆäËüµÄÏä×Ó·¢ÉúÁËÅö×²
+	 * æ£€æŸ¥å½“å‰çš„ç®±å­æ˜¯å¦å’Œå…¶å®ƒçš„ç®±å­å‘ç”Ÿäº†ç¢°æ’
 	 * 
-	 * @param curBoxIndex µ±Ç°Ïä×ÓÔÚÏä×ÓÊı×éaBoxesÖĞµÄË÷Òı
-	 * @param pixelLevel  ÊÇ·ñ½øĞĞÏñËØ¼¶±ğµÄÅö×²¼ì²â
-	 * @return boolean Èç¹û´æÔÚÅö×²£¬·µ»Øtrue£¬·ñÔò£¬·µ»Øfalse
+	 * @param curBoxIndex å½“å‰ç®±å­åœ¨ç®±å­æ•°ç»„aBoxesä¸­çš„ç´¢å¼•
+	 * @param pixelLevel  æ˜¯å¦è¿›è¡Œåƒç´ çº§åˆ«çš„ç¢°æ’æ£€æµ‹
+	 * @return boolean å¦‚æœå­˜åœ¨ç¢°æ’ï¼Œè¿”å›trueï¼Œå¦åˆ™ï¼Œè¿”å›false
 	 */
 	private boolean testBoxesCollision(int curBoxIndex, boolean pixelLevel){
 		for(int i = 0; i < boxNum; ++i){
@@ -253,7 +243,7 @@ public class RunningScene {
 	}
 	
 	/**
-	 * ¼ì²éÊÇ·ñËùÓĞÏä×Ó¾ù±»ÍÆËÍµ½Ä¿µÄµØ
+	 * æ£€æŸ¥æ˜¯å¦æ‰€æœ‰ç®±å­å‡è¢«æ¨é€åˆ°ç›®çš„åœ°
 	 * 
 	 * @return boolean
 	 */
