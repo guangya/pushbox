@@ -1,0 +1,8 @@
+bin/
+.classpath
+deployed/
+.eclipseme
+.eclipseme.tmp/
+.project
+*.jad
+.settings/
