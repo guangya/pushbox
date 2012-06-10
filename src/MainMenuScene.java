@@ -3,7 +3,7 @@ import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.GameCanvas;
 import javax.microedition.lcdui.game.Sprite;
 
-public class MainMenuScene{
+public class MainMenuScene extends Scene{
 	
 	// 场景尺寸
 	private int width;
@@ -17,8 +17,6 @@ public class MainMenuScene{
 	private int btnHeight;
 	// 菜单标题文字
 	private Image selectionImage;
-	// 游戏画布
-	private Engine engine;
 	// 存储各菜单项使用的图片绘制的坐标。items[菜单项索引][0:菜单图片的坐标，1:菜单文本的坐标][0:x坐标；1:y坐标]
 	private int items[][][];
 	// 当前选中的菜单想的索引
@@ -28,15 +26,15 @@ public class MainMenuScene{
 	// 菜单项的说明文字
 	private String itemNames[] = {"开 始 游 戏 ", "开 启 音 效", "操 作 说 明", "关          于", "退 出 游 戏"};
 	// 菜单项对应的游戏状态，与itemNames[]对应
-	private int    itemToGameState[] = {Engine.GAME_STATE_RUN, -1, Engine.GAME_STATE_OPERATION, Engine.GAME_STATE_ABOUT, Engine.GAME_STATE_EXIT};
+	private int    itemToGameState[] = {IEngine.GAME_STATE_RUN, -1, IEngine.GAME_STATE_OPERATION, IEngine.GAME_STATE_ABOUT, IEngine.GAME_STATE_EXIT};
 	
 	
-	public MainMenuScene(Engine engine, int width, int height){
+	public MainMenuScene(IEngine engine, int width, int height){
+		super(engine, width, height);
+		
 		this.width = width;
 		this.height = height;
-		this.engine = engine;
-		posX = 0;
-		posY = 0;
+
 		try{
 			btnImage = Image.createImage("/image/buttons.png");
 			selectionImage = Image.createImage("/image/selection.png");
@@ -99,7 +97,7 @@ public class MainMenuScene{
 	 * @param gra
 	 */
 	public void process(Graphics gra){
-		
+		gra.setColor(0, 0, 0);
 		gra.drawImage(selectionImage, 64, 40, Graphics.LEFT|Graphics.TOP);
 		
 		for(int i = 0; i < MENU_ITEM_NUM; i++){
@@ -111,6 +109,11 @@ public class MainMenuScene{
 			gra.drawString(itemNames[i], items[i][1][0], items[i][1][1], Graphics.LEFT|Graphics.TOP);
 		}
 	}
+	
+	/**
+	 * 未添加左右菜单，不处理左右菜单键消息
+	 */
+	public void menuEvent(int menu) {}
 	
 	/**
 	 * 初始化菜单项

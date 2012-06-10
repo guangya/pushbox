@@ -6,29 +6,27 @@ import javax.microedition.midlet.MIDletStateChangeException;
 public class MainMidlet extends MIDlet{
 	
 	private Display dis;
-	private Engine engine;
+	MyEngine myEngine;
 	
 	public MainMidlet() {
 		dis = Display.getDisplay(this);
-		engine = new Engine();
+		myEngine = new MyEngine();
 	}
 
-	protected void destroyApp(boolean arg0) throws MIDletStateChangeException {
-		System.out.println("enter in destroy app");
-	}
+	protected void destroyApp(boolean arg0) throws MIDletStateChangeException {}
 
 	protected void pauseApp() {}
 
 	protected void startApp() throws MIDletStateChangeException {
-		dis.setCurrent(engine);
-		engine.run();
-		
-		switch(engine.getGameState()){
-		case Engine.GAME_STATE_PAUSE:
+		dis.setCurrent(myEngine);
+		myEngine.start();
+	
+		switch(myEngine.getGameState()){
+		case IEngine.GAME_STATE_PAUSE:
 			// 游戏暂停
 			pauseApp();
 			break;
-		case Engine.GAME_STATE_EXIT:
+		case IEngine.GAME_STATE_EXIT:
 			// 设备进入Destoryed state
 			destroyApp(true);
 			break;

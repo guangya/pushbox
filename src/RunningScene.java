@@ -8,11 +8,8 @@ import javax.microedition.lcdui.game.TiledLayer;
 
 
 
-public class RunningScene {
+public class RunningScene extends Scene{
 	
-	private Engine engine;
-	private int canvasWidth;
-	private int canvasHeight;	
 	private Image  mapImage, playerImage, boxImage;
 	private Sprite player, aBoxes[];
 	private int boxNum;
@@ -26,10 +23,9 @@ public class RunningScene {
 	private boolean isWin;
 	private boolean isWait;
 	
-	public RunningScene(Engine engine, int width, int height){
-		this.engine = engine;
-		this.canvasWidth = width;
-		this.canvasHeight = height;
+	public RunningScene(IEngine engine, int width, int height){
+		super(engine, width, height);
+
 		initialize();
 	}
 
@@ -54,11 +50,11 @@ public class RunningScene {
 		player = new Sprite(playerImageFront, 16, 16);	
 		
 		// 初始化游戏地图
-		level = engine.getGameLevel();
+		level = engine.getCurrentLevel();
 		initMap(level);
 	}
 
-	protected void process(Graphics gra) {
+	public void process(Graphics gra) {
 		// 绘制地图
 		backMap.paint(gra);
 		wallMap.paint(gra);
@@ -97,7 +93,7 @@ public class RunningScene {
 				isWin = false;
 				isWait = true;
 				level = level + 1;
-				engine.setGameLevel(level);
+				engine.setCurrentLevel(level);
 				initMap(level);
 			}
 		}
@@ -105,16 +101,16 @@ public class RunningScene {
 	
 	public void keyEvent(int gameAction){
 		switch(gameAction){
-		case Engine.LEFT:
+		case MyEngine.LEFT:
 			moveSprite(-16, 0);
 			break;		
-		case Engine.RIGHT:
+		case MyEngine.RIGHT:
 			moveSprite(16, 0);
 			break;									
-		case Engine.UP:
+		case MyEngine.UP:
 			moveSprite(0, -16);
 			break;
-		case Engine.DOWN:
+		case MyEngine.DOWN:
 			moveSprite(0, 16);
 			break;
 		}
@@ -257,5 +253,17 @@ public class RunningScene {
 			}
 		}
 		return isAll;
+	}
+
+	public void menuEvent(int menu) {
+		switch(menu){
+		case IEngine.MENU_RIGHT:
+			engine.setGameState(IEngine.GAME_STATE_MENU);
+			break;
+		case IEngine.MENU_LEFT:
+			engine.setGameState(IEngine.GAME_STATE_RUN);
+			break;
+		}
+		
 	}
 }
