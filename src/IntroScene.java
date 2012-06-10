@@ -3,13 +3,13 @@ import javax.microedition.lcdui.Image;
 
 
 
-public class Intro extends Scene {
+public class IntroScene extends Scene {
 	
 	private int posX;             // 游戏简介场景左上角相对于屏幕左上角的X坐标
 	private int posY;             // 游戏简介场景左上角相对于屏幕左上角的Y坐标
 	private Image introImage;
 	
-	public Intro(IEngine engine, int width, int height){
+	public IntroScene(IEngine engine, int width, int height){
 		super(engine, width, height);
 		posX = 0;
 		posY = height;

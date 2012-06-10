@@ -93,7 +93,7 @@ public class MyEngine extends GameCanvas implements IEngine{
 			
 		// 游戏开始动画界面
 		case GAME_STATE_INTRO:
-			curScene = new Intro(this, canvasWidth, canvasHeight);
+			curScene = new IntroScene(this, canvasWidth, canvasHeight);
 			break;
 			
 		// 游戏关于界面
