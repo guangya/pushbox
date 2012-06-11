@@ -5,6 +5,14 @@ import javax.microedition.lcdui.game.GameCanvas;
 import javax.microedition.lcdui.game.TiledLayer;
 
 
+/**
+ * 本类既是游戏画布，又扮演者游戏引擎的作用
+ * 
+ * @author guangya
+ * @email  guangyait@gmail.com
+ *
+ */
+
 public class MyEngine extends GameCanvas implements IEngine{
 
 	// 当前场景
@@ -26,7 +34,7 @@ public class MyEngine extends GameCanvas implements IEngine{
 	private TiledLayer sysBackground;
 	// 游戏当前的运行状态
 	private int gameState;
-	
+	// 游戏当前所在的关卡
 	private int gameLevel;
 	
 	
@@ -179,16 +187,13 @@ public class MyEngine extends GameCanvas implements IEngine{
 	 * 
 	 * @param isOn
 	 */
-	public void setSoundSwitch(boolean isOn){
-		
-	}
+	public void setSoundSwitch(boolean isOn){}
 
 	/**
 	 * 设置游戏当前所在的关卡
 	 */
 	public void setCurrentLevel(int level) {
 		gameLevel = level;
-		
 	}
 	
 	/**
