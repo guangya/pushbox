@@ -43,11 +43,10 @@ public class Menu {
 	private int sBgPosX;
 	private int sBgPosY;
 	
-	
 	public Menu(String text){
 		this.text = text;
 		// 默认使用系统字体显示菜单文本
-		font = Font.getDefaultFont();
+		font = Font.getFont(Font.FACE_SYSTEM,Font.STYLE_PLAIN,Font.SIZE_LARGE);
 		// 计算文本相对于菜单中心点的坐标，依赖于text、font的初始化，勿颠倒顺序
 		calculateTextPos();
 		
@@ -86,6 +85,7 @@ public class Menu {
 		
 		// 如果设定了菜单文本，则绘制该文本，否则，不进行绘制操作
 		if(text != ""){
+			gra.setFont(font);
 			gra.drawString(text, posX + textPosX, posY + textPosY, Graphics.LEFT|Graphics.TOP);
 		}
 	}
@@ -158,7 +158,7 @@ public class Menu {
 	 * 
 	 * @param sBg
 	 */
-	public void setSeletedBackground(Image sBg){
+	public void setSelectedBackground(Image sBg){
 		this.selectedBackground = sBg;
 		
 		sBgPosX = -(selectedBackground.getWidth() / 2);
@@ -217,7 +217,7 @@ public class Menu {
 			textPosX = 0;
 			textPosY = 0;
 			return;
-		}
+		}		
 		
 		textPosX = -(font.stringWidth(text) / 2);
 		textPosY = -(font.getHeight() / 2);
